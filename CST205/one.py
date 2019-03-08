@@ -46,3 +46,12 @@ def roseColoredGlasses():
     setGreen(p, g - 50) 
   repaint(pic)
   
+#Problem 4
+def lightenUp():
+  pic = get_pic()
+  pixels = getPixels(pic)
+  for p in pixels:
+    newColor = makeColor(getRed(p)+50, getGreen(p)+50, getBlue(p)+50)
+    setColor(p, newColor)
+  repaint(pic)
+    
