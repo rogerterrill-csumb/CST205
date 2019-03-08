@@ -32,3 +32,17 @@ def moreRed(num):
       newRed = 255
     setRed(p, newRed)
   repaint(pic)
+  
+#Problem 3
+def roseColoredGlasses():
+  pic = get_pic()
+  pixels = getPixels(pic)
+  for p in pixels:
+    r = getRed(p)
+    b = getBlue(p)
+    g = getGreen(p)
+    setRed(p, r + 50)
+    setBlue(p, b - 50)
+    setGreen(p, g - 50) 
+  repaint(pic)
+  
