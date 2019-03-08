@@ -55,3 +55,11 @@ def lightenUp():
     setColor(p, newColor)
   repaint(pic)
     
+#Problem 5
+def makeNegative():
+  pic = get_pic()
+  pixels = getPixels(pic)
+  for p in pixels:
+    newColor = makeColor(255-getRed(p),255-getGreen(p),255-getBlue(p))
+    setColor(p, newColor)
+  repaint(pic)
