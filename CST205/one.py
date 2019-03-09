@@ -1,3 +1,15 @@
+#!/usr/bin/env python
+""" Provides list of functions to manipulate images
+"""
+
+__author__ = "Abby Packham, Carlos Orduna, Roger Terrill"
+__copyright__ = "Copyright 2019, CST205"
+__license__ = "GPL"
+__version__ = "1.0.1"
+__email__ = "apackham@csumb.edu, cordunacorrales@csumb.edu, rchicasterrill@csumb.edu "
+__status__ = "Production"
+
+
 # Warm up
 def get_pic():
   return makePicture(pickAFile())
@@ -61,5 +73,24 @@ def makeNegative():
   pixels = getPixels(pic)
   for p in pixels:
     newColor = makeColor(255-getRed(p),255-getGreen(p),255-getBlue(p))
+    setColor(p, newColor)
+  repaint(pic)
+  
+#Problem 6
+def BnW():
+  pic = get_pic()
+  pixels = getPixels(pic)
+  for p in pixels:
+    avg_color = (getRed(p)+getGreen(p)+getBlue(p))/3.0
+    newColor = makeColor(avg_color,avg_color,avg_color)
+    setColor(p, newColor)
+  repaint(pic)
+ 
+def betterBnW():
+  pic = get_pic()
+  pixels = getPixels(pic)
+  for p in pixels:
+    avg_color = avg_color = (getRed(p)*.299 + getGreen(p)*.587 + getBlue(p)*.114)
+    newColor = makeColor(avg_color,avg_color,avg_color)
     setColor(p, newColor)
   repaint(pic)
