@@ -2,11 +2,11 @@
 """ Provides list of functions to manipulate images
 """
 
-__author__ = "Abby Packham, Carlos Orduna, Roger Terrill"
+__author__ = "Roger Terrill"
 __copyright__ = "Copyright 2019, CST205"
 __license__ = "GPL"
 __version__ = "1.0.1"
-__email__ = "apackham@csumb.edu, cordunacorrales@csumb.edu, rchicasterrill@csumb.edu "
+__email__ = "rchicasterrill@csumb.edu "
 __status__ = "Production"
 
 
