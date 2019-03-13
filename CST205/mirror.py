@@ -4,8 +4,8 @@ def get_pic():
 # Problem 1
 def vertical_mirror():
   pic = get_pic()
-  width = getWidth(pic);
-  height = getHeight(pic);
+  width = getWidth(pic)
+  height = getHeight(pic)
   print width, height
   for x in range(0, width/2):
     for y in range(0, height):
@@ -18,11 +18,12 @@ def vertical_mirror():
       setGreen(mp, green)
       setBlue(mp, blue)
   repaint(pic)
+  writePictureTo(pic, "C://Users//roger.terrill//Documents//CST205//Photos/vertical_mirror.jpeg")
   
 def horizontal_mirror_top_bottom():
   pic = get_pic()
-  width = getWidth(pic);
-  height = getHeight(pic);
+  width = getWidth(pic)
+  height = getHeight(pic)
   print width, height
   for x in range(0, width):
     for y in range(0, height/2):
@@ -35,11 +36,12 @@ def horizontal_mirror_top_bottom():
       setGreen(mp, green)
       setBlue(mp, blue)
   repaint(pic)
+  writePictureTo(pic, "C://Users//roger.terrill//Documents//CST205//Photos/horizontal_mirror_top_bottom.jpeg")
   
 def horizontal_mirror_bottom_top():
   pic = get_pic()
-  width = getWidth(pic);
-  height = getHeight(pic);
+  width = getWidth(pic)
+  height = getHeight(pic)
   print width, height
   for x in range(0, width):
     for y in range(height/2, height):
@@ -52,11 +54,12 @@ def horizontal_mirror_bottom_top():
       setGreen(mp, green)
       setBlue(mp, blue)
   repaint(pic)
+  writePictureTo(pic, "C://Users//roger.terrill//Documents//CST205//Photos/horizontal_mirror_bottom_top.jpeg")
   
 def combo_mirror():
   pic = get_pic()
-  width = getWidth(pic);
-  height = getHeight(pic);
+  width = getWidth(pic)
+  height = getHeight(pic)
   print width, height
   for x in range(0, width/2):
     for y in range(0, height):
@@ -79,4 +82,5 @@ def combo_mirror():
       setGreen(mp, green)
       setBlue(mp, blue)
   repaint(pic)
+  writePictureTo(pic, "C://Users//roger.terrill//Documents//CST205//Photos/combo_mirror.jpeg")
   
