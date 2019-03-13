@@ -19,7 +19,7 @@ def copy_with_border():
       setGreen(new_pic, green)
       setBlue(new_pic, blue)
   show(mypic)
-  writePictureTo(pic, "C://Users//roger.terrill//Documents//CST205//Photos/copy_with_border.jpeg")
+  writePictureTo(mypic, "C://Users//roger.terrill//Documents//CST205//Photos/copy_with_border.jpeg")
   return mypic
   
 # Problem #1
@@ -41,3 +41,19 @@ def pyCopy(source, target, targetX, targetY):
   return target
   
 # Problem #2
+def makeCollage():
+  width = getWidth(source)
+  height = getHeight(source)
+  for x in range (0, width):
+    for y in range (0, height):
+      p = getPixel(source, x, y)
+      red = getRed(p)
+      green = getGreen(p)
+      blue = getBlue(p)
+      new_pic = getPixel(target, x+targetX, y+targetY)
+      setRed(new_pic, red)
+      setGreen(new_pic, green)
+      setBlue(new_pic, blue)
+  show(target)
+  writePictureTo(target, "C://Users//roger.terrill//Documents//CST205//Photos/pyCopy.jpeg")
+  return target
