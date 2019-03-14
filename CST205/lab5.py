@@ -184,33 +184,55 @@ def makeCollage():
   width = 2550
   height = 3300
   
-  for i in range(4):
+  for i in range(15):
     pic_list.append(get_pic())
   mypic = makeEmptyPicture(width, height)
   
-  #vertical_mirror(pic_list[0])
-  #horizontal_mirror_top_bottom(pic_list[1])
-  #combo_mirror(pic_list[2])
-  #pic_list[3] = rotatePic(pic_list[3])
-  #copy_with_border(pic_list[4])
-  #pic_list[5] = shrink(pic_list[5])
-  #combo_mirror(pic_list[6])
-  #pic_list[7] = shrink(pic_list[7])
-  #vertical_mirror(pic_list[7])
+  vertical_mirror(pic_list[0])
+  horizontal_mirror_top_bottom(pic_list[1])
+  combo_mirror(pic_list[2])
+  pic_list[3] = rotatePic(pic_list[3])
+  copy_with_border(pic_list[4])
+  pic_list[5] = rotatePic(pic_list[5])
+  combo_mirror(pic_list[6])
+  pic_list[7] = rotatePic(pic_list[7])
+  vertical_mirror(pic_list[8])
+  vertical_mirror(pic_list[9])
+  horizontal_mirror_top_bottom(pic_list[10])
+  combo_mirror(pic_list[11])
+  vertical_mirror(pic_list[12])
+  copy_with_border(pic_list[13])
+  pic_list[5] = rotatePic(pic_list[14])
+  
   x = 0
   y = 0
   count = 0
+  width_limit = False
+  height_limit = False
   
     
   for i in range(len(pic_list)):
-    count = count + 1
-    if((count % 3) == 0):
+    print "Picture",i+1, "Started..."
+    print "X at start is", x
+    width_limit = ( x + getWidth(pic_list[i])) > width
+    height_limit = ( y + getHeight(pic_list[i])) > height
+    if(width_limit):
       x = width - getWidth(pic_list[i]) - 1
+      print "x has changed to", x
+      
+    if(height_limit):
+      y = height - getHeight(pic_list[i]) - 1
+      
     collage = pyCopy(pic_list[i], mypic, x, y)
-    x = x + getWidth(pic_list[i])
-    if ((count % 3) == 0):
+    
+    if(width_limit): 
       x = 0
       y = y + getHeight(pic_list[i])
+      width_limit = False
+      print "second if"
+    else:
+      x = x + getWidth(pic_list[i])
+      print "else"
       
     print "Picture",i+1, "finished"
   writePictureTo(collage, "C://Developing//School//CST205//makeCollage.jpeg")
