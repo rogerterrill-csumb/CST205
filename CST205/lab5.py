@@ -104,11 +104,9 @@ def pyCopy(source, target, targetX, targetY):
 # Problem #2
 def makeCollage():
   pic_list = []
-  for i in range(2):
+  for i in range(8):
     pic_list.append(get_pic())
-    
-  print pic_list
-  print pic_list[1]
+  
   #width = getWidth(source)
   #height = getHeight(source)
   #for x in range (0, width):
