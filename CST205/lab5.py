@@ -1,8 +1,24 @@
-import random
 def get_pic():
   return makePicture(pickAFile())
 
 # Previous Functions
+def simpleCopy(pic):
+  width = getWidth(pic)
+  height = getHeight(pic)
+  mypic = makeEmptyPicture(width, height)
+  for x in range (0, getWidth(mypic)):
+    for y in range (0, getHeight(mypic)):
+      p = getPixel(pic, x, y)
+      red = getRed(p)
+      green = getGreen(p)
+      blue = getBlue(p)
+      new_pic = getPixel(mypic, x, y)
+      setRed(new_pic, red)
+      setGreen(new_pic, green)
+      setBlue(new_pic, blue)
+  show(mypic)
+  return mypic
+  
 def vertical_mirror(pic):
   width = getWidth(pic)
   height = getHeight(pic)
@@ -165,23 +181,36 @@ def pyCopy(source, target, targetX, targetY):
 # Problem #2
 def makeCollage():
   pic_list = []
-  for i in range(8):
-    pic_list.append(get_pic())
-  mypic = makeEmptyPicture(2550, 3300)
+  width = 2550
+  height = 3300
   
-  vertical_mirror(pic_list[0])
-  horizontal_mirror_top_bottom(pic_list[1])
-  combo_mirror(pic_list[2])
-  pic_list[3] = rotatePic(pic_list[3])
-  copy_with_border(pic_list[4])
-  pic_list[5] = shrink(pic_list[5])
-  combo_mirror(pic_list[6])
-  pic_list[7] = shrink(pic_list[7])
-  vertical_mirror(pic_list[7])
-
+  for i in range(4):
+    pic_list.append(get_pic())
+  mypic = makeEmptyPicture(width, height)
+  
+  #vertical_mirror(pic_list[0])
+  #horizontal_mirror_top_bottom(pic_list[1])
+  #combo_mirror(pic_list[2])
+  #pic_list[3] = rotatePic(pic_list[3])
+  #copy_with_border(pic_list[4])
+  #pic_list[5] = shrink(pic_list[5])
+  #combo_mirror(pic_list[6])
+  #pic_list[7] = shrink(pic_list[7])
+  #vertical_mirror(pic_list[7])
+  x = 0
+  y = 0
+  count = 0
+  
+    
   for i in range(len(pic_list)):
-    x = random.randint(0, 2550 - getWidth(pic_list[i]))
-    y = random.randint(0, 3300 - getHeight(pic_list[i]))
+    count = count + 1
+    if((count % 3) == 0):
+      x = width - getWidth(pic_list[i]) - 1
     collage = pyCopy(pic_list[i], mypic, x, y)
+    x = x + getWidth(pic_list[i])
+    if ((count % 3) == 0):
+      x = 0
+      y = y + getHeight(pic_list[i])
+      
     print "Picture",i+1, "finished"
   writePictureTo(collage, "C://Developing//School//CST205//makeCollage.jpeg")
