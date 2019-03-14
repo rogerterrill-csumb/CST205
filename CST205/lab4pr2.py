@@ -30,8 +30,7 @@ def simpleCopy(pic):
   
   
 # Problem 3
-def rotatePic():
-  pic = get_pic()
+def rotatePic(pic):
   width = getWidth(pic)
   height = getHeight(pic)
   mypic = makeEmptyPicture(height, width)
@@ -51,8 +50,7 @@ def rotatePic():
   
   
 # Problem 4
-def shrink():
-  pic = get_pic()
+def shrink(pic):
   width = getWidth(pic)
   height = getHeight(pic)
   mypic = makeEmptyPicture(width/2, height/2)
@@ -69,8 +67,3 @@ def shrink():
   show(mypic)
   writePictureTo(pic, "C://Users//roger.terrill//Documents//CST205//Photos/shrink.jpeg")
   return mypic
-  
-  
-    
-    
-  

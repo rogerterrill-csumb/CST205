@@ -1,7 +1,79 @@
+import random
 def get_pic():
   return makePicture(pickAFile())
-  
+
 # Previous Functions
+def vertical_mirror(pic):
+  width = getWidth(pic)
+  height = getHeight(pic)
+  for x in range(0, width/2):
+    for y in range(0, height):
+      p = getPixel(pic, x, y)
+      red = getRed(p)
+      green = getGreen(p)
+      blue = getBlue(p)
+      mp = getPixel(pic, width-x-1, y)
+      setRed(mp, red)
+      setGreen(mp, green)
+      setBlue(mp, blue)
+  return pic
+  
+def horizontal_mirror_top_bottom(pic):
+  width = getWidth(pic)
+  height = getHeight(pic)
+  for x in range(0, width):
+    for y in range(0, height/2):
+      p = getPixel(pic, x, y)
+      red = getRed(p)
+      green = getGreen(p)
+      blue = getBlue(p)
+      mp = getPixel(pic, x, height - y - 1)
+      setRed(mp, red)
+      setGreen(mp, green)
+      setBlue(mp, blue)
+  return pic
+  
+def horizontal_mirror_bottom_top(pic):
+  width = getWidth(pic)
+  height = getHeight(pic)
+  for x in range(0, width):
+    for y in range(height/2, height):
+      p = getPixel(pic, x, y)
+      red = getRed(p)
+      green = getGreen(p)
+      blue = getBlue(p)
+      mp = getPixel(pic, x, height - y - 1)
+      setRed(mp, red)
+      setGreen(mp, green)
+      setBlue(mp, blue)
+  return pic
+  
+def combo_mirror(pic):
+  width = getWidth(pic)
+  height = getHeight(pic)
+  for x in range(0, width/2):
+    for y in range(0, height):
+      p = getPixel(pic, x, y)
+      red = getRed(p)
+      green = getGreen(p)
+      blue = getBlue(p)
+      mp = getPixel(pic, width-x-1, y)
+      setRed(mp, red)
+      setGreen(mp, green)
+      setBlue(mp, blue)
+  for x in range(0, width):
+    for y in range(0, height/2):
+      p = getPixel(pic, x, y)
+      red = getRed(p)
+      green = getGreen(p)
+      blue = getBlue(p)
+      mp = getPixel(pic, x, height - y - 1)
+      setRed(mp, red)
+      setGreen(mp, green)
+      setBlue(mp, blue)
+  return pic
+
+
 def simpleCopy(pic):
   width = getWidth(pic)
   height = getHeight(pic)
@@ -16,14 +88,11 @@ def simpleCopy(pic):
       setRed(new_pic, red)
       setGreen(new_pic, green)
       setBlue(new_pic, blue)
-  show(mypic)
-  writePictureTo(mypic, "C://Users//roger.terrill//Documents//CST205//Photos/simple_copy.jpeg")
   return mypic
   
   
 # Problem 3
-def rotatePic():
-  pic = get_pic()
+def rotatePic(pic):
   width = getWidth(pic)
   height = getHeight(pic)
   mypic = makeEmptyPicture(height, width)
@@ -37,14 +106,11 @@ def rotatePic():
       setRed(new_pic, red)
       setGreen(new_pic, green)
       setBlue(new_pic, blue)
-  show(mypic)
-  writePictureTo(mypic, "C://Users//roger.terrill//Documents//CST205//Photos/rotate_pic.jpeg")
   return mypic
   
   
 # Problem 4
-def shrink():
-  pic = get_pic()
+def shrink(pic):
   width = getWidth(pic)
   height = getHeight(pic)
   mypic = makeEmptyPicture(width/2, height/2)
@@ -58,17 +124,13 @@ def shrink():
       setRed(new_pic, red)
       setGreen(new_pic, green)
       setBlue(new_pic, blue)
-  show(mypic)
-  writePictureTo(mypic, "C://Users//roger.terrill//Documents//CST205//Photos/shrink.jpeg")
   return mypic
 
 # Warm up
-def copy_with_border():
-  pic = get_pic()
+def copy_with_border(pic):
   width = getWidth(pic)
   height = getHeight(pic)
   mypic = makeEmptyPicture(width+200, height+200)
-  print mypic
   for x in range (0, width):
     for y in range (0, height):
       p = getPixel(pic, x, y)
@@ -79,8 +141,6 @@ def copy_with_border():
       setRed(new_pic, red)
       setGreen(new_pic, green)
       setBlue(new_pic, blue)
-  show(mypic)
-  writePictureTo(mypic, "C://Users//roger.terrill//Documents//CST205//Photos/copy_with_border.jpeg")
   return mypic
   
 # Problem #1
@@ -97,8 +157,7 @@ def pyCopy(source, target, targetX, targetY):
       setRed(new_pic, red)
       setGreen(new_pic, green)
       setBlue(new_pic, blue)
-  show(target)
-  writePictureTo(target, "C://Users//roger.terrill//Documents//CST205//Photos/pyCopy.jpeg")
+  #show(target)      
   return target
   
 # Problem #2
@@ -106,18 +165,21 @@ def makeCollage():
   pic_list = []
   for i in range(8):
     pic_list.append(get_pic())
+  mypic = makeEmptyPicture(2550, 3300)
   
-  #width = getWidth(source)
-  #height = getHeight(source)
-  #for x in range (0, width):
-  #  for y in range (0, height):
-  #    p = getPixel(source, x, y)
-   #   red = getRed(p)
-    #  green = getGreen(p)
-     # blue = getBlue(p)
-      #new_pic = getPixel(target, x+targetX, y+targetY)
-      #setRed(new_pic, red)
-      #setGreen(new_pic, green)
-      #setBlue(new_pic, blue)
-  #show(target)
-  #writePictureTo(target, "C://Users//roger.terrill//Documents//CST205//Photos/pyCopy.jpeg")
+  vertical_mirror(pic_list[0])
+  horizontal_mirror_top_bottom(pic_list[1])
+  combo_mirror(pic_list[2])
+  rotatePic(pic_list[3])
+  copy_with_border(pic_list[4])
+  shrink(pic_list[5])
+  vertical_mirror(pic_list[6])
+  combo_mirror(pic_list[7])
+ 
+    
+  for i in range(len(pic_list)):
+    x = random.randint(0, 2550 - getWidth(pic_list[i]))
+    y = random.randint(0, 3300 - getHeight(pic_list[i]))
+    collage = pyCopy(pic_list[i], mypic, x, y)
+    print "picture ",i, "finished"
+  writePictureTo(collage, "C://Developing//School//CST205//makeCollage.jpeg")
