@@ -1,3 +1,4 @@
 *.pybak
 *.pylog
 /.idea
+*.jpeg

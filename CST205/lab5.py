@@ -16,6 +16,7 @@ def vertical_mirror(pic):
       setRed(mp, red)
       setGreen(mp, green)
       setBlue(mp, blue)
+  print "Vertical Mirror Done!"
   return pic
   
 def horizontal_mirror_top_bottom(pic):
@@ -31,6 +32,7 @@ def horizontal_mirror_top_bottom(pic):
       setRed(mp, red)
       setGreen(mp, green)
       setBlue(mp, blue)
+  print "Horizontal Mirror Top to Bottom Done!"
   return pic
   
 def horizontal_mirror_bottom_top(pic):
@@ -46,6 +48,7 @@ def horizontal_mirror_bottom_top(pic):
       setRed(mp, red)
       setGreen(mp, green)
       setBlue(mp, blue)
+  print "Horizontal Mirror Bottom Top Done!"
   return pic
   
 def combo_mirror(pic):
@@ -71,6 +74,7 @@ def combo_mirror(pic):
       setRed(mp, red)
       setGreen(mp, green)
       setBlue(mp, blue)
+  print "Combo Mirror Done!"
   return pic
 
 
@@ -90,8 +94,6 @@ def simpleCopy(pic):
       setBlue(new_pic, blue)
   return mypic
   
-  
-# Problem 3
 def rotatePic(pic):
   width = getWidth(pic)
   height = getHeight(pic)
@@ -106,10 +108,9 @@ def rotatePic(pic):
       setRed(new_pic, red)
       setGreen(new_pic, green)
       setBlue(new_pic, blue)
+  print "Rotate Picture Done!"
   return mypic
   
-  
-# Problem 4
 def shrink(pic):
   width = getWidth(pic)
   height = getHeight(pic)
@@ -124,6 +125,7 @@ def shrink(pic):
       setRed(new_pic, red)
       setGreen(new_pic, green)
       setBlue(new_pic, blue)
+  print "Shrink Done!"
   return mypic
 
 # Warm up
@@ -141,6 +143,7 @@ def copy_with_border(pic):
       setRed(new_pic, red)
       setGreen(new_pic, green)
       setBlue(new_pic, blue)
+  print "Copy With Border Done!"
   return mypic
   
 # Problem #1
@@ -156,8 +159,7 @@ def pyCopy(source, target, targetX, targetY):
       new_pic = getPixel(target, x+targetX, y+targetY)
       setRed(new_pic, red)
       setGreen(new_pic, green)
-      setBlue(new_pic, blue)
-  #show(target)      
+      setBlue(new_pic, blue)    
   return target
   
 # Problem #2
@@ -170,16 +172,16 @@ def makeCollage():
   vertical_mirror(pic_list[0])
   horizontal_mirror_top_bottom(pic_list[1])
   combo_mirror(pic_list[2])
-  rotatePic(pic_list[3])
+  pic_list[3] = rotatePic(pic_list[3])
   copy_with_border(pic_list[4])
-  shrink(pic_list[5])
-  vertical_mirror(pic_list[6])
-  combo_mirror(pic_list[7])
- 
-    
+  pic_list[5] = shrink(pic_list[5])
+  combo_mirror(pic_list[6])
+  pic_list[7] = shrink(pic_list[7])
+  vertical_mirror(pic_list[7])
+
   for i in range(len(pic_list)):
     x = random.randint(0, 2550 - getWidth(pic_list[i]))
     y = random.randint(0, 3300 - getHeight(pic_list[i]))
     collage = pyCopy(pic_list[i], mypic, x, y)
-    print "picture ",i, "finished"
+    print "Picture",i+1, "finished"
   writePictureTo(collage, "C://Developing//School//CST205//makeCollage.jpeg")
