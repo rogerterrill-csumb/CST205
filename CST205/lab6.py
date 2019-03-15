@@ -123,6 +123,24 @@ def Artify():
 
   show(pic)
   return pic
-    
-    
+
+# Problem 3
+def chromakey():
+  green_pic = get_pic()
+  background_pic = get_pic()
+  background_green = makeColor(61,255,15)
+  width = getWidth(green_pic)
+  height = getHeight(green_pic)
+  for x in range(0, width):
+    for y in range(0, height):
+      px = getPixel(green_pic, x, y)
+      color = getColor(px)
+      background_px = getPixel(background_pic, x, y)
+      background_color = getColor(background_px)
+      if distance(color, background_green) < 80.0:
+        setColor(px, background_color)
+      
+
+  show(green_pic)
+  return green_pic 
  
