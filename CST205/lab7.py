@@ -1,3 +1,14 @@
+""" Provides list of functions to create a St. Patrick's Day Card
+"""
+
+__author__ = "Roger Terrill, Abby Packham, Carlos Orduna"
+__copyright__ = "Copyright 2019, CST205"
+__license__ = "GPL"
+__version__ = "1.0.1"
+__email__ = "rchicasterrill@csumb.edu, apackham@csumb.edu, cordunacorrales@csumb.edu  "
+__status__ = "Production"
+
+
 def get_pic():
   return makePicture(pickAFile())
   
