@@ -42,13 +42,13 @@ def line_drawing2(tolerance):
   for x in range(0, width-1):
    for y in range(0, height-1):
      px = getPixel(drawing, x, y)
-     main_pixel = (getRed(px) + getGreen(px) + getBlue(px))/3
+     main_pixel = getRed(px)
      
      px_right = getPixel(drawing, x+1, y)
-     right_pixel = (getRed(px_right) + getGreen(px_right) + getBlue(px_right))/3
+     right_pixel = getRed(px_right)
      
      px_bottom = getPixel(drawing, x, y+1)
-     bottom_pixel = (getRed(px_bottom) + getGreen(px_bottom) + getBlue(px_bottom))/3
+     bottom_pixel = getRed(px_bottom)
      
      right_distance = abs(main_pixel - right_pixel)
      bottom_distance = abs(main_pixel - bottom_pixel)
