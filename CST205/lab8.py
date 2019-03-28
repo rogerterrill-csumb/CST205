@@ -29,12 +29,6 @@ def maxSample(sound):
     max_val = max(max_val, getSampleValue(sample))
   return max_val
     
-def isValue(sound, value):
-  max_val = 0
-  for sample in getSamples(sound):
-    if value == getSampleValue(sample):
-      print sample
-
 def maxVolume(sound):
   largest = maxSample(sound)
   maxPossibleSampleValue = 32767.0
@@ -44,7 +38,6 @@ def maxVolume(sound):
     setSampleValue(sample, value*factor)
   writeSoundTo(sound, "C://Developing//School//CST205//maxVolume.wav")
   
-# 44409:-6663
 def goToEleven(sound):
   for sample in getSamples(sound):
     value = getSampleValue(sample)
