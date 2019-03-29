@@ -62,6 +62,20 @@ def sound_collage():
     index = copy(song, target, index)
     index = copy(silence_sound,target,index)
   return target
+
+# Problem 4
+def reverse(sound):
+  length = getLength(sound)
+  sample_rate = int(getSamplingRate(sound))
+  print sample_rate
+  index = 0
+  reverse_sound = makeEmptySound(length, sample_rate)
+  for sample in getSamples(sound):
+    value = getSampleValue(sample)
+    setSampleValueAt(reverse_sound, length - index - 1, value)
+    index = index + 1
+  return reverse_sound
+    
   
 
 
