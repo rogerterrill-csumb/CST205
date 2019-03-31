@@ -1,4 +1,3 @@
-
 # Warm Up
 def loop():
   word = ''
