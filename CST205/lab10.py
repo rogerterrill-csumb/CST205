@@ -6,7 +6,7 @@ def loop():
     
     
 def hangman():
-  #showInformation("Today you play Hangman, type a letter and if it is in the word, the letter will be displayed, if not you lose a chance.")
+  printNow("Today you play Hangman, type a letter and if it is in the word, the letter will be displayed, if not you lose a chance.")
   char = ''
   hidden_word = "star wars"
   length = len(hidden_word)
@@ -29,12 +29,12 @@ def hangman():
   while true:
     char = requestString("What is your guess?").lower()[:1]
     if char.isalpha() == False:
-      print "Letters only please!"
+      printNow("Letters only please!")
     count = 0
     if char in exposed_word or char in guessed_letters:
-      print "You've already selected that letter, try again."
+      printNow("You've already selected that letter, try again.")
     elif char in hidden_word:
-      print "Correct!"
+      printNow("Correct!")
       count = hidden_word.count(char)
       num_of_letters_exposed = num_of_letters_exposed + count
       index = -1
@@ -46,14 +46,14 @@ def hangman():
       left_over = 6 - k
       guessed_letters = guessed_letters[:left_over] + char
       
-    print "Word so far:"
-    print exposed_word
-    print "Incorrect guesses:"
-    print guessed_letters
-    print "You have used " + str(left_over) + " of six guesses\n"
+    printNow("Word so far:")
+    printNow(exposed_word)
+    printNow("Incorrect guesses:")
+    printNow(guessed_letters)
+    printNow("You have used " + str(left_over) + " of six guesses\n")
     if num_of_letters == num_of_letters_exposed:
-      print "Congratulations you win!"
+      printNow("Congratulations you win!")
       return
     if k == 0:
-      print "Sorry, you lose. Better luck next time!"
-      return    
+      printNow("Sorry, you lose. Better luck next time!")
+      return 
