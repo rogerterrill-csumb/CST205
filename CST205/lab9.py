@@ -19,7 +19,7 @@ def maxVolume(sound):
 def clip(source, start, end):
   length = end - start
   index = 0
-  empty_sound = makeEmptySound(length, 44100)
+  empty_sound = makeEmptySound(length, getSamplingRate(source))
   for i in range(start, end):
     value = getSampleValueAt(source, i)
     setSampleValueAt(empty_sound, index, value)
@@ -45,6 +45,7 @@ def silence(duration):
   return silence_sound
 
 def sound_collage():
+  setMediaPath()
   sound_list = []
   num_of_songs = 5
   length = 0
@@ -61,6 +62,7 @@ def sound_collage():
   for song in sound_list:
     index = copy(song, target, index)
     index = copy(silence_sound,target,index)
+  writeSoundTo(target, getMediaPath() + 'sound_collage.wav')
   return target
 
 # Problem 4
