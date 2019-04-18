@@ -29,31 +29,28 @@ def craps():
     die_2 = Die(0)
 
     while True:
-        input("Press [enter] to roll")
+        requestString("Press [enter] to roll")
         die_1.roll()
         die_2.roll()
         total = add_dice(die_1.value, die_2.value)
-        print(f'You rolled a {die_1.value} and {die_2.value} for a total {total}')
+        print 'You rolled a ', die_1.value
+        print 'And you rolled a ', die_2.value
+        print 'For a total ', total
         if first_roll:
             if total == 7 or total == 11:
-                print("You win!")
+                print "You win!"
                 return
             elif total == 2 or total == 3 or total == 12:
-                print("You lose :(")
+                print "You lose :("
+                return
             else:
-                print('Point is ', total)
+                print 'Point is ', total 
                 point_val = total
                 first_roll = False
         else:
             if total == 7:
-                print("You lose :(")
+                print "You lose :(" 
                 return
             if total == point_val:
-                print("You win :)")
+                print "You win :)"
                 return
-
-        print(total)
-
-
-if __name__ == '__main__':
-    craps()
