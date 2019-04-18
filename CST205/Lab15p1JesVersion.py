@@ -6,6 +6,8 @@ __email__ = "rchicasterrill@csumb.edu, apackham@csumb.edu, cordunacorrales@csumb
 __status__ = "Production"
 
 import random
+import calendar
+import datetime
 
 
 class Die:
@@ -20,7 +22,7 @@ class Die:
 def add_dice(first_die, second_die):
     return first_die + second_die
 
-
+# Craps Game
 def craps():
     print("Welcome to Craps")
     point_val = 0
@@ -54,3 +56,42 @@ def craps():
             if total == point_val:
                 print "You win :)"
                 return
+                
+
+def compute_days_between_dates(original_date, target_date):
+    this_year = datetime.date(target_date.year, original_date.month, original_date.day)
+    dt = this_year - target_date
+    return dt.days
+
+
+def print_birthday_information(days):
+    if days < 0:
+        print "You had your birthday" + str(-days) + "days ago this year."
+    elif days > 0:
+        print "Your birthday is in" + str(days) + "days"
+    else:
+        print("Happy Birthday!!!")              
+
+# Birthday Check                                                                                                
+def bday_calendar():
+  day = int(requestString("What day number were you born?"))
+  month = int(requestString("What month number were you born?"))
+  year = int(requestString("What year number were you born? YYYY"))
+  bday = datetime.date(year, month, day)
+  
+  print calendar.month(year, month)
+    
+  today = datetime.date.today()
+  number_of_days = compute_days_between_dates(bday, today)
+  print_birthday_information(number_of_days)
+  
+# Declaration of Independence
+def declaration():
+  day = 4
+  month = 7
+  year = 1776
+  day_of_week = calendar.weekday(year, month, day)
+  day_of_week_name = calendar.day_name[day_of_week]
+  month_name = calendar.month_name[month]
+  print day_of_week_name + " " + month_name + " " + str(day) + "th " + str(year)
+  
